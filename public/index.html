@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css"> 
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Noto+Sans+SC:wght@100..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet"> -->
+</head>
+<body>
+    <div class="centered-box" >
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">City</label>
+        <input type="text" class="form-control" id="city" placeholder="eg:- New York">
+      </div>
+      <div class="mb-3"> 
+        <label for="formGroupExampleInput2" class="form-label">Country</label>
+        <input type="text" class="form-control" id="country" placeholder="eg:- United States">
+      </div>
+      <div class="d-grid"> 
+        <input class="btn btn-primary" type="submit" value="Submit" id="submit-btn" >
+      </div>
+      <!-- <button class="test"><a href="./test.html">click me</a></button> -->
+    </div>
+
+    <div id="weather-info">
+      <div class="place"><span id="city-display">Thiruvananthapuram</span> <br> <span id="country-display">India</span></div>
+      <div class="temp"> <h3><span id="temp-val">22℃</span></h3> <h5 ><span id="temp-text">Heavy Rainfall and snow</span></h5></div>
+      <div class="feels-like"><h4>feels like: <span id="feels">24℃</span></h4></div>
+      <div class="stats">precepitation: <span id="precep">0.2</span>
+          <br>Humidity: <span id="humid">74</span>
+          <br>Visibility: <span id="visibl">3</span>  
+          <br>Pressure: <span id="pressure">1007</span><br>
+          <button class="reset-weather btn btn-primary" id="reset-btn">Choose another place</button></div>
+  </div>
+
+  <div id="loader-screen">
+    <div class="cloud-con">
+        <svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier"> <path d="M16.2857 20C19.4416 20 22 17.4717 22 14.3529C22 11.8811 20.393 9.78024 18.1551 9.01498C17.8371 6.19371 15.4159 4 12.4762 4C9.32028 4 6.7619 6.52827 6.7619 9.64706C6.7619 10.3369 6.88706 10.9978 7.11616 11.6089C6.8475 11.5567 6.56983 11.5294 6.28571 11.5294C3.91878 11.5294 2 13.4256 2 15.7647C2 18.1038 3.91878 20 6.28571 20H16.2857Z" fill="#ffab35">
+            </path> </g></svg>
+    </div>
+    <div class="loader-container">
+        <div class="loader">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+</div>
+
+<!-- button to trigger modal -->
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" hidden="true" id="modalToggle">
+    Launch caution modal
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade caution-window" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Something went wrong</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p id="modal-text">Modal body text goes here.</p>
+        </div>
+        <div class="modal-footer">
+          <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <script src="node_modules/jquery/dist/jquery.min.js"></script> -->
+  <script src="./core/dist/umd/popper.min.js"></script>
+  <script src="./Bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

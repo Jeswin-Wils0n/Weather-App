@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Bootstrap/dist/css/bootstrap.min.css">
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Noto+Sans+SC:wght@100..900&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@300..700&display=swap" rel="stylesheet"> -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0; 
+        }
+        body {
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 2em;
+            background-image: url("assets/clyde-rs-4XbZCfU2Uoo-unsplash.jpg");
+        }
+        #weather-info{ 
+            /* height: 50%; */
+            width: 30%;
+            background: radial-gradient(rgb(74, 76, 189) 60%,rgba(25, 42, 94, 0.675) );
+            /* background: linear-gradient(45deg,cadetblue,transparent ); */
+            /* linear-gradient(45deg, black, transparent) */
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-template-rows: auto auto auto auto ;
+            border-radius: 20px;
+            /* position: relative; */
+        }
+        #weather-info>div{
+            padding: 10px;
+        }
+        .place{
+            grid-column: 1 / span 2;
+            font-family: "PT Sans", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            /* background: #7fffd4; */
+        }
+        .feels-like{
+            grid-column: 1 / span 2;
+            grid-row: 2;
+            /* background: darksalmon; */
+            font-family: "Inconsolata", monospace;
+            font-optical-sizing: auto;
+            font-weight: 300;
+            font-style: normal;
+            color: rgb(245, 222, 134)
+        }
+        .temp{
+            grid-column: 3;
+            grid-row: 1 / span 2;
+            /* background: tan; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            border-radius: 0 20px 0 20px;
+            font-family: "Noto Sans SC", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 800;
+            font-style: normal;
+
+        }
+        .stats{
+            grid-column: 1 / span 3;
+            grid-row: 3 / span 2;
+            /* background: yellow; */
+            text-align: center;
+            /* box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.2); */
+            border-radius: 20px 20px 20px 20px;
+            font-family: "Quicksand";
+            font-optical-sizing: auto;
+            font-weight: 300;
+            font-style: normal;
+            font-size: 30px;
+
+        }
+        .reset-weather{
+            width: 100%;
+            margin-top: 20px;  
+            background: rgb(116, 147, 212);
+
+        }
+        .stats>span{
+            font-weight: 500;
+        }
+        .temp>h5{
+            text-align: center;
+            font-size: small;
+        }
+        .temp>h3{
+            margin-bottom: 10px;
+            font-size: 50px;
+        }
+
+
+
+.loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3vh;
+}
+
+.loader {
+  display: flex;
+  justify-content: space-between;
+  width: 80px;
+}
+
+.loader div {
+  width: 16px;
+  height: 16px;
+  background-color: #ffab35;
+  border-radius: 50%;
+  animation: grow-shrink 1.5s infinite;
+}
+
+.loader div:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.loader div:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.loader div:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.loader-screen{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    opacity: 0.7;
+}
+
+
+@keyframes grow-shrink {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+}
+        
+    </style>
+</head>
+<body>
+    <div id="weather-info">
+        <div class="place">Thiruvananthapuram <br> India</div>
+        <div class="temp"> <h3>22℃</h3> <h5 >Heavy Rainfall and snow</h5></div>
+        <div class="feels-like"><h4>feels like: 24℃</h4></div>
+        <div class="stats">precepitation: <span id="precep">0.2</span>
+            <br>Humidity: <span id="humid">74</span>
+            <br>Visibility: <span id="visibl">3</span>  
+            <br>Pressure: <span id="pressure">1007</span><br>
+            <button class="reset-weather btn btn-primary">Choose another place</button></div>
+    </div>
+    <!-- <div class="loader-screen">
+        <div class="cloud-con">
+            <svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier"> <path d="M16.2857 20C19.4416 20 22 17.4717 22 14.3529C22 11.8811 20.393 9.78024 18.1551 9.01498C17.8371 6.19371 15.4159 4 12.4762 4C9.32028 4 6.7619 6.52827 6.7619 9.64706C6.7619 10.3369 6.88706 10.9978 7.11616 11.6089C6.8475 11.5567 6.56983 11.5294 6.28571 11.5294C3.91878 11.5294 2 13.4256 2 15.7647C2 18.1038 3.91878 20 6.28571 20H16.2857Z" fill="#ffab35">
+                </path> </g></svg>
+        </div>
+        <div class="loader-container">
+            <div class="loader">
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+    </div> -->
+    
+    
+    <!-- <script>
+        function fetchImage(description) {
+            const unsplashApiUrl = `https://api.unsplash.com/photos/random?query=${description}&client_id=YOUR_UNSPLASH_API_KEY`;
+
+            fetch(unsplashApiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const imageUrl = data.urls.regular;
+                    updateBackgroundImage(imageUrl, description);
+                });
+        }
+
+        function updateBackgroundImage(imageUrl, description) {
+            document.body.style.backgroundImage = `url(${imageUrl})`;
+            document.getElementById('weather-info').textContent = description;
+        }
+
+        fetch('YOUR_WEATHERSTACK_API_URL')
+            .then(response => response.json())
+            .then(data => {
+                const weatherDescription = data.current.weather_descriptions[0];
+                fetchImage(weatherDescription);
+            });
+    </script> -->
+</body>
+</html>
